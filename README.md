@@ -22,7 +22,7 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
 
 ## Endpoints
 
-1. POST api/v1/student
+### 1. POST api/v1/student
 
 - Request Body Data Format:
 
@@ -55,7 +55,7 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
   }
   ```
 
-2. GET api/v1/student/page/limit eg api/v1/student/1/2
+### 2. GET api/v1/student/page/limit eg api/v1/student/1/2
 
 - Response Data Format:
   ```JSON
@@ -94,7 +94,7 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
   }
   ```
 
-3. PUT api/v1/student/studentId eg api/v1/student/111111
+### 3. PUT api/v1/student/studentId eg api/v1/student/111111
 
 - Request Body Data Format:
 
@@ -118,7 +118,7 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
   }
   ```
 
-4. DELETE api/v1/student/studentId eg api/v1/student/111111
+### 4. DELETE api/v1/student/studentId eg api/v1/student/111111
 
 - Response Data Format:
   ```JSON
