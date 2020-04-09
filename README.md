@@ -5,12 +5,17 @@ Imagine a simple API where you can create a record for a student, fetch/read all
 update and delete a student. We do not need an API key to do this.
 
 e.g.
+
 an end point /api/v1/student (with POST method) will create a student record in the databases.
 Students details is passes in the body
+
 api/v1/student (with GET method) will read all students – pagination required
+
 api/v1/student/{some id} (with GET method)will read a specific student record
+
 api/v1/student/{some id} (with PUT method) will update a record. Details for update are put in the
 body
+
 api/v1/student/{some id} (with DELETE method) will delete a specific record.
 
 # Implementation
