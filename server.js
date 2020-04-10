@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 
 const app = express();
 
+app.use(cors());
+
 dotenv.config();
 
 const Student = require('./models/Student');
@@ -11,8 +13,6 @@ const Student = require('./models/Student');
 const PORT = process.env.PORT || 3000;
 
 const apiEndpoint = process.env.ENDPOINT || 'api/v1';
-
-app.use(cors());
 
 app.use(express.json());
 
@@ -52,15 +52,40 @@ app.post(`/${apiEndpoint}/student`, (req, res) => {
     });
 });
 
+// GET route to get a single student's record
+app.get(`/${apiEndpoint}/student/:studentId`, (req, res) => {
+  // Get the studentId from the params :studentId
+  const { studentId } = req.params;
+
+  // Get the student record from the database
+  Student.findOne({
+    where: {
+      studentId,
+    },
+  })
+    .then((student) => {
+      res.status(200).json({
+        success: true,
+        data: student,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        success: false,
+        error,
+      });
+    });
+});
+
 // GET all students
-app.get(`/${apiEndpoint}/student/:page?/:limit?`, async (req, res) => {
+app.get(`/${apiEndpoint}/students/:page?/:limit?`, async (req, res) => {
   // Get optional page and limit params from req.params
   let { page, limit } = req.params;
 
-  // If page is given, change to int, else set to 1
+  // If page is given, cast to int, else set to 1
   page = page ? parseInt(page) : 1;
 
-  // If limit is given, change to int, else set to 10
+  // If limit is given, cast to int, else set to 10
   limit = limit ? parseInt(limit) : 10;
 
   // Offset, from which entry to start
@@ -111,7 +136,7 @@ app.get(`/${apiEndpoint}/student/:page?/:limit?`, async (req, res) => {
     });
 });
 
-// PUT route to add a student
+// PUT route to update a student's records
 app.put(`/${apiEndpoint}/student/:studentId`, (req, res) => {
   // Get the studentId from the params :studentId
   const { studentId } = req.params;
@@ -148,7 +173,7 @@ app.put(`/${apiEndpoint}/student/:studentId`, (req, res) => {
     });
 });
 
-// DELETE route to delete a student record
+// DELETE route to delete a student's record
 app.delete(`/${apiEndpoint}/student/:studentId`, (req, res) => {
   // Get the studentId from the params :studentId
   const { studentId } = req.params;

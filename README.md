@@ -55,7 +55,27 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
   }
   ```
 
-### 2. GET api/v1/student/page/limit eg api/v1/student/1/2
+### 2. GET api/v1/student/studentId eg api/v1/student/111111
+
+- Response Data Format:
+  ```JSON
+  {
+    "success": true,
+    "data": {
+        "id": 9,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@gmail.com",
+        "phone": "0712345678",
+        "studentId": "111111",
+        "city": "Nairobi",
+        "createdAt": "2020-04-10T00:03:45.000Z",
+        "updatedAt": "2020-04-10T00:03:45.000Z"
+    }
+  }
+  ```
+
+### 3. GET api/v1/students/page/limit eg api/v1/student/1/2
 
 - Response Data Format:
   ```JSON
@@ -94,7 +114,7 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
   }
   ```
 
-### 3. PUT api/v1/student/studentId eg api/v1/student/111111
+### 4. PUT api/v1/student/studentId eg api/v1/student/111111
 
 - Request Body Data Format:
 
@@ -118,7 +138,7 @@ api/v1/student/{some id} (with DELETE method) will delete a specific record.
   }
   ```
 
-### 4. DELETE api/v1/student/studentId eg api/v1/student/111111
+### 5. DELETE api/v1/student/studentId eg api/v1/student/111111
 
 - Response Data Format:
   ```JSON
